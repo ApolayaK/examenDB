@@ -39,7 +39,7 @@ El modelo relacional incluye las siguientes entidades principales:
 
 ## Diagrama del Modelo Relacional
 
-![alt text](image.png)
+![alt text](/models/image.png)
 
 *Imagen del diagrama entidad-relación con las tablas y relaciones.*
 https://drawsql.app/teams/apolayaschrader/diagrams/examenes

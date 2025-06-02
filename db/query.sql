@@ -18,6 +18,24 @@ JOIN Desarrollo D ON A.asignacion_id = D.asignacion_id
 GROUP BY E.estudiante_id;
 
 
+SELECT
+    E.nombre AS nombre_estudiante,
+    EV.nombre AS nombre_evaluacion,
+    EV.fecha_inicio,
+    EV.fecha_fin,
+    CASE
+        WHEN A.asignacion_id IS NULL THEN 'No Asignado'
+        WHEN D.desarrollo_id IS NULL THEN 'Asignado, No Rendido'
+        ELSE 'Rendido'
+    END AS estado_examen,
+    D.puntaje_obtenido,
+    D.estado AS estado_aprobacion
+FROM Estudiante E
+CROSS JOIN Evaluacion EV
+LEFT JOIN Asignacion A ON E.estudiante_id = A.estudiante_id AND EV.evaluacion_id = A.evaluacion_id
+LEFT JOIN Desarrollo D ON A.asignacion_id = D.asignacion_id
+WHERE E.estudiante_id = 9 
+ORDER BY E.nombre, EV.nombre;
 -- ------------------------------------------------------------------------
 
 -- CONSULTAS 
@@ -40,7 +58,7 @@ SELECT
   COUNT(*) - COUNT(d.desarrollo_id) AS exámenes_pendientes
 FROM Asignacion a
 LEFT JOIN Desarrollo d ON a.asignacion_id = d.asignacion_id
-WHERE a.estudiante_id = 1;
+WHERE a.estudiante_id = 2;
 
 
 -- d. ¿Cuál es la mejor y peor calificación de una determinada evaluación? 

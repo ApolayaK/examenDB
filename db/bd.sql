@@ -75,4 +75,3 @@ CREATE TABLE IF NOT EXISTS Respuesta (
   CONSTRAINT fk_pregunta_respuesta FOREIGN KEY (pregunta_id) REFERENCES Pregunta(pregunta_id),
   CONSTRAINT fk_alternativa FOREIGN KEY (alternativa_id) REFERENCES Alternativa(alternativa_id)
 );
-
